@@ -1,6 +1,9 @@
 package com.inventario.service;
 
+import java.math.BigDecimal;
+
 public class Validaciones {
+
     public static boolean negativos(int num){
         if (num>=0){
             return true;
@@ -13,5 +16,15 @@ public class Validaciones {
         }else{
             return false;
         }
+    }
+
+    //Metodo para verificar si un texto (como un nombre) no sea vacio o tenga caracteres con espacios
+    public static boolean textoVacio(String texto){
+        if (texto.trim().isBlank()){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }

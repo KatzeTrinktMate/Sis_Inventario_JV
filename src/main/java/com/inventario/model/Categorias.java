@@ -1,5 +1,7 @@
 package com.inventario.model;
 
+import com.inventario.service.Validaciones;
+
 public class Categorias {
     private int id;
     private String nombre;
@@ -7,6 +9,14 @@ public class Categorias {
     public Categorias(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Categorias{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                '}';
     }
 
     public int getId() {
@@ -22,6 +32,6 @@ public class Categorias {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if (Validaciones.textoVacio(nombre)) this.nombre = nombre;
     }
 }
