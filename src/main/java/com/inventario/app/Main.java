@@ -4,8 +4,6 @@ import com.inventario.model.Libros;
 
 import java.math.BigDecimal;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args){
 
@@ -13,7 +11,7 @@ public class Main {
         Libros lib2 = new Libros("9789974003057", "Aprender a programar ", "V. Núñez", "Costa Norte", new BigDecimal("1460.0"), 6,3, true);
 
 
-
+        System.out.println(lib1.mostrarInfo() + "\n" + lib2.mostrarInfo());
 
 
 

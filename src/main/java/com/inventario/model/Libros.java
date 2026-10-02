@@ -17,8 +17,6 @@ public class Libros {
     protected boolean activo;
 
     //Constructor
-
-
     public Libros(String isbn, String titulo, String autor, String editorial, BigDecimal precio, int stock, int stockMin, boolean activo) {
         this.isbn = isbn;
         this.titulo = titulo;
@@ -30,7 +28,7 @@ public class Libros {
         this.activo = activo;
     }
 
-    //Métodos
+    //Methods
     @Override
     public String toString() {
         return "Productos{" +
@@ -45,10 +43,12 @@ public class Libros {
 
     public String mostrarInfo(){
         return  "ISBN: " + isbn +
-                " Nombre: " + titulo +
-                " Precio: " + precio +
-                " Stock: " + stock +
-                " Min: "  + stockMin;
+                " | Nombre: " + titulo +
+                " | Autor: " + autor +
+                " | Editorial: " + editorial +
+                " | Precio: " + precio +
+                " | Stock: " + stock +
+                " | Min: "  + stockMin + " |";
     }
 
     //Getter and setters
@@ -100,6 +100,7 @@ public class Libros {
         return this.precio;
     }
 
+    //How to the precio is a BigDecimal (a class and used to object).
     public void setPrecio(BigDecimal precio) {
         Objects.requireNonNull(precio, "No puede ser nulo");
         if (precio.signum() < 0) throw new IllegalArgumentException("El precio no puede ser negativo");
