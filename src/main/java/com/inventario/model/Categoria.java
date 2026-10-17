@@ -28,6 +28,7 @@ public class Categoria {
 
     public void addCategory(){
         //por ahora estoy poniendo en el hasmap para despues poder buscar categorias, por ahora no los valido por que no se como :,c
+        //primero se debe de validar si la categoria existe o no pero eso mas tarde
         catMap.put(this.id, this.nombre);
         
     }
