@@ -17,6 +17,7 @@ public class Categorias {
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 '}';
+        
     }
 
     public int getId() {
@@ -32,6 +33,7 @@ public class Categorias {
     }
 
     public void setNombre(String nombre) {
-        if (Validaciones.textoVacio(nombre)) this.nombre = nombre;
+        if (Validaciones.textoVacio(nombre)) {this.nombre = nombre;}
+        else{System.out.println("El texto no puede estar vacio o en blanco");}
     }
 }

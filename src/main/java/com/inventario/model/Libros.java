@@ -6,15 +6,15 @@ import java.util.Objects;
 
 public class Libros {
     //Variables
-    protected String isbn;
-    protected String titulo;
-    protected String autor;
-    protected String editorial;
-    protected BigDecimal precio;
-    protected int stock;
-    protected int stockMin;
-    protected Categorias categoria;
-    protected boolean activo;
+    private String isbn;
+    private String titulo;
+    private String autor;
+    private String editorial;
+    private BigDecimal precio;
+    private int stock;
+    private int stockMin;
+    private Categorias categoria;
+    private boolean activo;
 
     //Constructor
     public Libros(String isbn, String titulo, String autor, String editorial, BigDecimal precio, int stock, int stockMin, boolean activo) {
@@ -41,14 +41,14 @@ public class Libros {
     }
 
 
-    public String mostrarInfo(){
-        return  "ISBN: " + isbn +
+    public void mostrarInfo(){
+        System.out.println("ISBN: " + isbn +
                 " | Nombre: " + titulo +
                 " | Autor: " + autor +
                 " | Editorial: " + editorial +
                 " | Precio: " + precio +
                 " | Stock: " + stock +
-                " | Min: "  + stockMin + " |";
+                " | Min: "  + stockMin + " | \n");
     }
 
     //Getter and setters
@@ -57,7 +57,9 @@ public class Libros {
     }
 
     public void setIsbn(String isbn) {
-        if(Validaciones.textoVacio(isbn)) this.isbn = isbn;
+        if(Validaciones.textoVacio(isbn)) throw new IllegalArgumentException("El isbn no puede estar vacio");
+        this.isbn = isbn;
+        
     }
 
     public String getTitulo() {
@@ -65,9 +67,8 @@ public class Libros {
     }
 
     public void setTitulo(String titulo) {
-        if (Validaciones.textoVacio(titulo)){
-            this.titulo = titulo;
-        }
+        if (Validaciones.textoVacio(titulo)) throw new IllegalArgumentException("El texto no puede estar vacio");
+        this.titulo = titulo;
     }
 
     public String getAutor() {
@@ -75,9 +76,9 @@ public class Libros {
     }
 
     public void setAutor(String autor) {
-        if (Validaciones.textoVacio(autor)){
-            this.autor = autor;
-        }
+        if (Validaciones.textoVacio(titulo)) throw new IllegalArgumentException("El autor no puede estar vacio");
+        this.autor = autor;
+        
     }
 
     public int getStockMin() {
@@ -85,7 +86,8 @@ public class Libros {
     }
 
     public void setStockMin(int stockMin) {
-       if(Validaciones.negativos(stockMin)) this.stockMin = stockMin;
+       if(Validaciones.negativos(stockMin)) throw new IllegalArgumentException("No puede estar ser un numero negativo");
+        this.stockMin = stockMin;
     }
 
     public String getEditorial() {
@@ -93,14 +95,14 @@ public class Libros {
     }
 
     public void setEditorial(String editorial) {
-        if (Validaciones.textoVacio(editorial)) this.editorial = editorial;
+        if (!Validaciones.textoVacio(editorial)) throw new IllegalArgumentException("La editorial no puede estar vacio");
+            this.editorial = editorial;
     }
 
     public BigDecimal getPrecio() {
         return this.precio;
     }
 
-    //How to the precio is a BigDecimal (a class and used to object).
     public void setPrecio(BigDecimal precio) {
         Objects.requireNonNull(precio, "No puede ser nulo");
         if (precio.signum() < 0) throw new IllegalArgumentException("El precio no puede ser negativo");
@@ -112,7 +114,8 @@ public class Libros {
     }
 
     public void setStock(int stock) {
-        if(Validaciones.negativos(stock)) this.stock = stock;
+        if(Validaciones.negativos(stock)) throw new IllegalArgumentException ("No puede haber numeros negativos");
+            this.stock = stock;
     }
 
     public Categorias getCategoria() {
