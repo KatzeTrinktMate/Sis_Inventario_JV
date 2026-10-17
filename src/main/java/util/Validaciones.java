@@ -1,5 +1,5 @@
-package com.inventario.service;
-import java.math.BigDecimal;
+package util;
+import com.inventario.model.*;
 
 public class Validaciones {
 
