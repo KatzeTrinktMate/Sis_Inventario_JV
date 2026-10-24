@@ -1,18 +1,17 @@
 package com.inventario.model;
 
-import java.util.Map;
+import java.util.*;
 
 import util.Validaciones;
 
-import java.util.HashMap;
-
 
 public class Categoria {
-    private int id;
+    private Long id;
     private String nombre;
-    Map<Integer, String> catMap = new HashMap<>();
 
-    public Categoria(int id, String nombre) {
+
+
+    public Categoria(Long id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
@@ -26,19 +25,25 @@ public class Categoria {
 
     }
 
-    public void addCategory(){
-        //por ahora estoy poniendo en el hasmap para despues poder buscar categorias, por ahora no los valido por que no se como :,c
-        //primero se debe de validar si la categoria existe o no pero eso mas tarde
-        catMap.put(this.id, this.nombre);
-        
+    //Equals y Hashcode
+    public boolean equals(Object c){
+        if (this == c) return true;
+        if (c == null || getClass() != c.getClass()) return false;
+        Categoria cat = (Categoria) c;
+        return Objects.equals(id, cat.id);
+    }
+    public int hashCode(){
+        return Objects.hash(id);
     }
 
-    public int getId() {
+    //Getters y Setters
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
-        if (Validaciones.negativos(id))
+    public void setId(Long id) {
+        if (Validaciones.negativos(Math.toIntExact(id)))
             throw new IllegalArgumentException("El ID no puede ser negativo");
         this.id = id;
     }

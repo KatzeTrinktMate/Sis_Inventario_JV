@@ -32,7 +32,7 @@ public class Libro {
             setActivo(activo);
         } catch (Exception e) {
             System.out.println("Hubo un error " + e);
-            System.out.println("Todos los campos no deben de estar vacios");
+            System.out.println("Todos los campos deben estar completos");
         }
 
     }
@@ -62,6 +62,20 @@ public class Libro {
                 " | Precio: " + precio +
                 " | Stock: " + stock +
                 " | Min: " + stockMin + " | \n";
+    }
+
+    //Equals y Hashcode
+    @Override
+    public boolean equals (Object o){
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Libro libro = (Libro) o;
+        return Objects.equals(isbn, libro.isbn);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(isbn);
     }
 
     // Getter and setters
